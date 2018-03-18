@@ -59,7 +59,7 @@ LDFLAGS = -static $(MCUFLAGS) -Wl,--start-group -lgcc -lc -lg -Wl,--end-group\
 all: $(PROJECT).bin $(PROJECT).asm
 
 clean:
-	$(RM) $(OBJS) $(PROJECT).elf $(PROJECT).bin $(PROJECT).asm
+	$(RM) $(OBJS) $(PROJECT).elf $(PROJECT).bin $(PROJECT).asm tags
 
 # Hardware specific
 
