@@ -57,7 +57,7 @@ SystemClock_Config() {
 
     /* Update CMSIS variable (which can be updated also
      * through SystemCoreClockUpdate function) */
-    SystemCoreClock = 168000000;
+    SystemCoreClock = 48000000;
 }
 
 void

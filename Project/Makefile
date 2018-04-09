@@ -10,7 +10,7 @@ HEAP_SIZE = 0x400
 
 SOURCES_S = src/startup_stm32f051x8.s
 
-SOURCES_C = main.c src/system_stm32f0xx.c src/stm32f0xx_ll_adc.c src/stm32f0xx_ll_comp.c src/stm32f0xx_ll_crc.c src/stm32f0xx_ll_crs.c src/stm32f0xx_ll_dac.c src/stm32f0xx_ll_dma.c src/stm32f0xx_ll_exti.c src/stm32f0xx_ll_gpio.c src/stm32f0xx_ll_i2c.c src/stm32f0xx_ll_pwr.c src/stm32f0xx_ll_rcc.c src/stm32f0xx_ll_rtc.c src/stm32f0xx_ll_spi.c src/stm32f0xx_ll_tim.c src/stm32f0xx_ll_usart.c src/stm32f0xx_ll_utils.c
+SOURCES_C = src/main.c src/system_stm32f0xx.c src/stm32f0xx_ll_adc.c src/stm32f0xx_ll_comp.c src/stm32f0xx_ll_crc.c src/stm32f0xx_ll_crs.c src/stm32f0xx_ll_dac.c src/stm32f0xx_ll_dma.c src/stm32f0xx_ll_exti.c src/stm32f0xx_ll_gpio.c src/stm32f0xx_ll_i2c.c src/stm32f0xx_ll_pwr.c src/stm32f0xx_ll_rcc.c src/stm32f0xx_ll_rtc.c src/stm32f0xx_ll_spi.c src/stm32f0xx_ll_tim.c src/stm32f0xx_ll_usart.c src/stm32f0xx_ll_utils.c
 
 SOURCES = $(SOURCES_S) $(SOURCES_C)
 OBJS = $(SOURCES_S:.s=.o) $(SOURCES_C:.c=.o)
@@ -56,7 +56,10 @@ LDFLAGS = -static $(MCUFLAGS) -Wl,--start-group -lgcc -lc -lg -Wl,--end-group\
 
 .PHONY: all clean flash erase
 
-all: $(PROJECT).bin $(PROJECT).asm
+all: $(PROJECT).bin $(PROJECT).asm tags
+
+tags:
+	ctags -R .
 
 clean:
 	$(RM) $(OBJS) $(PROJECT).elf $(PROJECT).bin $(PROJECT).asm tags
